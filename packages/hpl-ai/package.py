@@ -39,8 +39,8 @@ class HplAi(AutotoolsPackage, CudaPackage, ROCmPackage):
     depends_on('mpi@1.1:')
     depends_on('blas')
     depends_on('blaspp')
-    depends_on('blaspp +cuda', when='+cuda')
-    depends_on('blaspp +rocm', when='+rocm')
+    depends_on('blaspp@2021.04.01: +cuda', when='+cuda')
+    depends_on('blaspp@2021.04.01: +rocm', when='+rocm')
 
     depends_on('autoconf', type='build')
     depends_on('automake', type='build')
@@ -98,8 +98,11 @@ class HplAi(AutotoolsPackage, CudaPackage, ROCmPackage):
             cppflags+=' -DHPLAI_T_AFLOAT=double '
 
         if '+cuda' in self.spec:
-            cppflags+=' -DBLASPP_WITH_CUBLAS -DHPLAI_DEVICE_BLASPP_GEMM -DHPLAI_DEVICE_BLASPP_TRSM '
+            cppflags+=' -DBLAS_HAVE_CUBLAS -DHPLAI_DEVICE_BLASPP_GEMM -DHPLAI_DEVICE_BLASPP_TRSM '
             libs+=' -lcudart -lcublas '
+        if '+rocm' in self.spec:
+            cppflags+=' -DBLAS_HAVE_ROCBLAS -DHPLAI_DEVICE_BLASPP_GEMM -DHPLAI_DEVICE_BLASPP_TRSM '
+            libs+=' -lcudart -lrocblas '
 
         if (self.spec.satisfies('^intel-mkl') or
             self.spec.satisfies('^intel-oneapi-mkl') or
