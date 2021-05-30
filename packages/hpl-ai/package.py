@@ -102,6 +102,7 @@ class HplAi(AutotoolsPackage, CudaPackage, ROCmPackage):
             libs+=' -lcudart -lcublas '
 
         if (self.spec.satisfies('^intel-mkl') or
+            self.spec.satisfies('^intel-oneapi-mkl') or
             self.spec.satisfies('^intel-parallel-studio+mkl')):
             ldflags+='{0}'.format(
                 self.spec['blas'].libs.ld_flags)
