@@ -11,13 +11,14 @@ spack repo add --scope=site sysu-scc-spack-repo
 # A Simple Test
 
 spack install \
-    sysu-scc-spack-repo.hpl-ai@2.3d \
-    blaspp@2021.04.01+openmp \
-    openblas@0.3.15 threads=openmp \
-    openmpi@3.1.6
+    sysu-scc-spack-repo.hpl-ai \
+    ^sysu-scc-spack-repo.blaspp@2021.04.01+openmp \
+    ^sysu-scc-spack-repo.openblas@0.3.15 threads=openmp \
+    ^mpich@3.2.1 \
+    ^findutils@4.4.2 # findutils@4.6.0 will fail
 spack load hpl-ai
 cp `spack location --install-dir hpl-ai`/bin/HPL.dat HPL.dat
-mpirun -n 4 -x OMP_NUM_THREADS=2 xhpl_ai
+OMP_NUM_THREADS=2 `which mpirun` -n 4 xhpl_ai
 ```
 
 ## License

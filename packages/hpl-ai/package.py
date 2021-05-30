@@ -2,7 +2,7 @@
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
- 
+
 from spack import *
 import platform
 
@@ -83,7 +83,7 @@ class HplAi(AutotoolsPackage, CudaPackage, ROCmPackage):
             "configure"
         )
 
-        cppflags=' -O3 '
+        cppflags=' -O3 -DOMPI_SKIP_MPICXX -DMPICH_SKIP_MPICXX '
         libs=''
         ldflags=''
 
@@ -100,7 +100,7 @@ class HplAi(AutotoolsPackage, CudaPackage, ROCmPackage):
         if '+cuda' in self.spec:
             cppflags+=' -DBLASPP_WITH_CUBLAS -DHPLAI_DEVICE_BLASPP_GEMM -DHPLAI_DEVICE_BLASPP_TRSM '
             libs+=' -lcudart -lcublas '
-        
+
         if (self.spec.satisfies('^intel-mkl') or
             self.spec.satisfies('^intel-parallel-studio+mkl')):
             ldflags+='{0}'.format(
