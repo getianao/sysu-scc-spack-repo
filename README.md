@@ -1,6 +1,6 @@
 # sysu-scc-spack-repo
 
-[Spack](https://spack.readthedocs.io/en/v0.16.2/repositories.html) package repository maintained by Student Cluster Competition Team @ Sun Yat-sen University.
+[Spack](https://spack.readthedocs.io/en/v0.16.3/repositories.html) package repository maintained by Student Cluster Competition Team @ Sun Yat-sen University.
 
 ## How to use
 
@@ -17,7 +17,7 @@ spack install \
     ^mpich@3.2.1 \
     ^findutils@4.4.2 # findutils@4.6.0 will fail on Centos7
 spack load hpl-ai
-cp $(spack location --install-dir hpl-ai)/bin/HPL.dat HPL.dat
+cp $(spack location -i hpl-ai)/bin/HPL.dat HPL.dat
 OMP_NUM_THREADS=2 $(which mpirun) -n 4 xhpl_ai
 ```
 
