@@ -1,6 +1,6 @@
 # sysu-scc-spack-repo
 
-[Spack](https://spack.readthedocs.io/en/v0.16.3/repositories.html) package repository maintained by Student Cluster Competition Team @ Sun Yat-sen University.
+[Spack](https://spack.readthedocs.io/en/v0.17.0/repositories.html) package repository maintained by Student Cluster Competition Team @ Sun Yat-sen University.
 
 ## How to use
 
@@ -12,8 +12,8 @@ spack repo add --scope=site sysu-scc-spack-repo
 
 spack install \
     sysu-scc-spack-repo.hpl-ai \
-    ^sysu-scc-spack-repo.blaspp@2021.04.01+openmp \
-    ^sysu-scc-spack-repo.openblas@0.3.17 threads=openmp \
+    ^blaspp@2021.04.01+openmp \
+    ^openblas@0.3.18 threads=openmp \
     ^mpich@3.2.1 \
     ^findutils@4.4.2 # findutils@4.6.0 will fail on Centos7
 spack load hpl-ai
