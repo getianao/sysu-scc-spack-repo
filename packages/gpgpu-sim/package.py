@@ -14,6 +14,7 @@ class GpgpuSim(MakefilePackage):
     version('4.0.1', tag='v4.0.1')
 
     depends_on('makedepend', type=('build'))
+    depends_on('sed', type=('build'))
     depends_on('bison', type=('build'))
     depends_on('flex', type=('build'))
     depends_on('zlib', type=('link'))
