@@ -24,12 +24,12 @@ from hashlib import sha256
 from spack import *
 
 
-class MibenchSecurity(MakefilePackage):
+class MibenchTelecomm(MakefilePackage):
     """FIXME: Put a proper description of your package here."""
 
     # FIXME: Add a proper url for your package's homepage here.
     homepage = "https://vhosts.eecs.umich.edu/mibench/"
-    url      = "https://vhosts.eecs.umich.edu/mibench/security.tar.gz"
+    url      = "https://vhosts.eecs.umich.edu/mibench/telecomm.tar.gz"
 
     # FIXME: Add a list of GitHub accounts to
     # notify when the package is updated.
@@ -37,38 +37,34 @@ class MibenchSecurity(MakefilePackage):
 
     # FIXME: Add proper versions and checksums here.
     # version('1.2.3', '0123456789abcdef0123456789abcdef')
-    version('1.0', sha256='866f4a36d53e285824a2b9f513f125d4aaaffef3eb2cd264a9cb675eaa554222')
+    version('1.0', sha256='cdcdc9bfa8ef7c78a91b9b682ad611ce762920e06a3b39140c22ded0e2e634aa')
 
     # FIXME: Add dependencies if required.
 
     def edit(self, spec, prefix):
         # FIXME: Edit the Makefile if necessary
         # FIXME: If not needed delete this function
-        makefiles = ['./blowfish/Makefile',
-            './pgp/src/Makefile',
-            './rijndael/Makefile',
-            './sha/Makefile']
+        makefiles = ['./FFT/Makefile',
+            './CRC32/Makefile',
+            './adpcm/src/Makefile',
+            './gsm/Makefile']
         for mf in makefiles:
             makefile = FileFilter(mf)
-            makefile.filter('^CC.*=.*', "")
             makefile.filter('gcc', "cc")
             makefile.filter('-static', "")
-        
-        makefile = FileFilter('./rijndael/aesxam.c')
-        makefile.filter('\(char\)flen', "flen.__pos")
         
         with open('Makefile', 'w') as mf:
             mf.write("""
 all:
-	make -C blowfish
-	make -C pgp/src
-	make -C rijndael
-	make -C sha
+	make -C FFT
+	make -C CRC32
+	make -C adpcm/src
+	make -C gsm
 """)
     
     def install(self, spec, prefix):
         mkdirp(prefix.bin)
-        bins = ['blowfish/bftest', 'blowfish/bfspeed', 'blowfish/bf', 'pgp/src/pgp', 'rijndael/rijndael', 'sha/sha']
+        bins = ['adpcm/src/rawcaudio', 'adpcm/src/rawdaudio', 'adpcm/src/timing', 'CRC32/crc', 'FFT/fft', 'gsm/bin/toast', 'gsm/bin/untoast']
         for b in bins:
             install(b, prefix.bin)
         mkdirp(join_path(prefix, 'data'))

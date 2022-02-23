@@ -48,8 +48,7 @@ class MibenchNetwork(MakefilePackage):
             './patricia/Makefile']
         for mf in makefiles:
             makefile = FileFilter(mf)
-            makefile.filter('gcc', "$(CC) $(CFLAGS)")
-            makefile.filter('-O3', "")
+            makefile.filter('gcc', "cc")
             makefile.filter('-static', "")
         
         with open('Makefile', 'w') as mf:
