@@ -67,6 +67,6 @@ all:
         mkdirp(prefix.bin)
         bins = ['basicmath/basicmath_small', 'basicmath/basicmath_large', 'bitcount/bitcnts', 'qsort/qsort_small', 'qsort/qsort_large', 'susan/susan']
         for b in bins:
-            install_tree(b, prefix.bin)
+            install(b, prefix.bin)
         mkdirp(join_path(prefix, 'data'))
         install_tree('.', join_path(prefix, 'data'))
