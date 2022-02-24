@@ -40,6 +40,9 @@ class MibenchConsumer(MakefilePackage):
     version('1.0', sha256='86d76a66fa567953c7b814a6c6e816c6af0afab59610160acb8036899d03d1f9')
 
     # FIXME: Add dependencies if required.
+    depends_on('libmad', type='run')
+    depends_on('libtiff', type='run')
+    depends_on('lame', type='run')
 
     def edit(self, spec, prefix):
         # FIXME: Edit the Makefile if necessary
@@ -56,13 +59,12 @@ class MibenchConsumer(MakefilePackage):
             mf.write("""
 all:
 	make -C jpeg/jpeg-6a
-	make -C lame/lame3.70
 	make -C typeset/lout-3.24
 """)
     
     def install(self, spec, prefix):
         mkdirp(prefix.bin)
-        bins = ['jpeg/jpeg-6a/cjpeg','jpeg/jpeg-6a/djpeg','lame/lame3.70/lame','typeset/lout-3.24/lout']
+        bins = ['jpeg/jpeg-6a/cjpeg','jpeg/jpeg-6a/djpeg','typeset/lout-3.24/lout']
         for b in bins:
             install(b, prefix.bin)
         mkdirp(join_path(prefix, 'data'))
