@@ -31,9 +31,12 @@ class GpgpuSim(MakefilePackage):
             ' | sed \'s/"invalid token"/invalid token/\' '+
             '> $(OUTPUT_DIR)/ptx_parser_decode.def')
         for mf in glob.glob("**/*akefile", recursive=True)+glob.glob("**/*.mk", recursive=True):
+            print(mf, flush=True)
             m = FileFilter(mf)
-            m.filter('gcc', 'cc -fno-reorder-blocks-and-partition')
-            m.filter('g++', 'c++ -fno-reorder-blocks-and-partition')
+            m.filter('gcc\\n', 'cc -fno-reorder-blocks-and-partition \n')
+            m.filter('g\+\+\\n', 'c++ -fno-reorder-blocks-and-partition \n')
+            m.filter('gcc(?:[^-\\n])', 'cc -fno-reorder-blocks-and-partition ')
+            m.filter('g\+\+(?:[^-\\n])', 'c++ -fno-reorder-blocks-and-partition ')
     
     def install(self, spec, prefix):
         mkdirp(join_path(prefix, 'gpgpu-sim_distribution'))
