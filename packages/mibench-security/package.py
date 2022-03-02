@@ -51,7 +51,7 @@ class MibenchSecurity(MakefilePackage):
         for mf in makefiles:
             makefile = FileFilter(mf)
             makefile.filter('^CC.*=.*', "")
-            makefile.filter('gcc', "cc")
+            makefile.filter('gcc', "cc -Wl,--emit-relocs")
             makefile.filter('-static', "")
         
         makefile = FileFilter('./rijndael/aesxam.c')

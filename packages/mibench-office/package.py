@@ -41,6 +41,7 @@ class MibenchOffice(MakefilePackage):
     version('1.0', sha256='e8bd0229346b8926dd61cfa8a377e9ce8751381dc669e062acc1b89df58eff4b')
 
     # FIXME: Add dependencies if required.
+    depends_on('ghostscript', type='run')
 
     def edit(self, spec, prefix):
         # FIXME: Edit the Makefile if necessary
@@ -48,14 +49,14 @@ class MibenchOffice(MakefilePackage):
         makefiles = ['./ghostscript/src/Makefile', './ghostscript/src/gcc-head.mak']
         for mf in makefiles:
             makefile = FileFilter(mf)
-            makefile.filter('gcc', "cc")
+            makefile.filter('gcc', "cc -Wl,--emit-relocs")
             makefile.filter('-static', "")
 
         makefiles = ['./ispell/Makefile',
             './stringsearch/Makefile']
         for mf in makefiles:
             makefile = FileFilter(mf)
-            makefile.filter('gcc', "cc")
+            makefile.filter('gcc', "cc -Wl,--emit-relocs")
             makefile.filter('-static', "")
 
         for mf in glob.glob('./ghostscript/src/**/*.h', recursive=True)+glob.glob('./ghostscript/src/**/*.c', recursive=True):
@@ -74,14 +75,13 @@ class MibenchOffice(MakefilePackage):
         with open('Makefile', 'w') as mf:
             mf.write("""
 all:
-	make -C ghostscript/src
 	make -C ispell
 	make -C stringsearch
 """)
     
     def install(self, spec, prefix):
         mkdirp(prefix.bin)
-        bins = ['ispell/ispell', 'ghostscript/src/gs', 'stringsearch/search_small', 'stringsearch/search_large']
+        bins = ['ispell/ispell', 'stringsearch/search_small', 'stringsearch/search_large']
         for b in bins:
             install(b, prefix.bin)
         mkdirp(join_path(prefix, 'data'))

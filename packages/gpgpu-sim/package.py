@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+import glob
 
 class GpgpuSim(MakefilePackage):
 
@@ -29,6 +30,10 @@ class GpgpuSim(MakefilePackage):
             ' | sed \'s/"end of file"/end of file/\' '+
             ' | sed \'s/"invalid token"/invalid token/\' '+
             '> $(OUTPUT_DIR)/ptx_parser_decode.def')
+        for mf in glob.glob("../*akefile", recursive=True)+glob.glob("../*.mk", recursive=True):
+            m = FileFilter(mf)
+            m.filter('gcc', 'cc -fno-reorder-blocks-and-partition')
+            m.filter('g++', 'c++ -fno-reorder-blocks-and-partition')
     
     def install(self, spec, prefix):
         mkdirp(join_path(prefix, 'gpgpu-sim_distribution'))

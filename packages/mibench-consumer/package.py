@@ -50,7 +50,7 @@ class MibenchConsumer(MakefilePackage):
         makefiles = ['./jpeg/jpeg-6a/Makefile', './lame/lame3.70/Makefile', './typeset/lout-3.24/Makefile']
         for mf in makefiles:
             makefile = FileFilter(mf)
-            makefile.filter('gcc', "cc")
+            makefile.filter('gcc', "cc -Wl,--emit-relocs")
             makefile.filter('-static', "")
             makefile.filter('-lncurses', "")
             makefile.filter('-DBRHIST', "")
