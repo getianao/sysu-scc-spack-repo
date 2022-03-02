@@ -12,7 +12,8 @@ class GpgpuSim(MakefilePackage):
     git = homepage
     url      = "https://github.com/gpgpu-sim/gpgpu-sim_distribution/archive/refs/tags/v4.0.1.tar.gz"
 
-    version('4.0.1', tag='v4.0.1')
+    # version('4.0.1', tag='v4.0.1')
+    version('4.0.1', sha256='9c7d6e42af507dc7d7572cfe0d5179fa41b90bf3299522e438034a1aaad06f81')
 
     depends_on('makedepend', type=('build'))
     depends_on('sed', type=('build'))
@@ -30,13 +31,16 @@ class GpgpuSim(MakefilePackage):
             ' | sed \'s/"end of file"/end of file/\' '+
             ' | sed \'s/"invalid token"/invalid token/\' '+
             '> $(OUTPUT_DIR)/ptx_parser_decode.def')
-        for mf in glob.glob("**/*akefile", recursive=True)+glob.glob("**/*.mk", recursive=True):
+        for mf in ['setup_environment']+glob.glob("**/*akefile", recursive=True)+glob.glob("**/*.mk", recursive=True):
             print(mf, flush=True)
+            fno = " -fno-reorder-blocks-and-partition" if "%gcc" in self.spec else ""
             m = FileFilter(mf)
-            m.filter('gcc\\n', 'cc -fno-reorder-blocks-and-partition \n')
-            m.filter('g\+\+\\n', 'c++ -fno-reorder-blocks-and-partition \n')
-            m.filter('gcc(?:[^-\\n])', 'cc -fno-reorder-blocks-and-partition ')
-            m.filter('g\+\+(?:[^-\\n])', 'c++ -fno-reorder-blocks-and-partition ')
+            m.filter('gcc-\$\(CC_VERSION\)/cuda-\$\(CUDART_VERSION\)/','')
+            m.filter('gcc-\$CC_VERSION/cuda-\$CUDA_VERSION_NUMBER/','')
+            m.filter('gcc', 'cc' + fno)
+            m.filter('g\+\+', 'c++' + fno)
+            m.filter('CC_VERSION.*', '')
+            
     
     def install(self, spec, prefix):
         mkdirp(join_path(prefix, 'gpgpu-sim_distribution'))
