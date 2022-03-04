@@ -22,6 +22,7 @@ class GpgpuSim(MakefilePackage):
     depends_on('zlib', type=('link'))
     depends_on('cuda@:11.0.99', type=('build', 'link', 'run'))
     depends_on('gl', type=('link'))
+    conflicts("%gcc@8:")
 
     def edit(self, spec, prefix):
         # fix <https://github.com/gpgpu-sim/gpgpu-sim_distribution/issues/221>
@@ -33,7 +34,6 @@ class GpgpuSim(MakefilePackage):
             '> $(OUTPUT_DIR)/ptx_parser_decode.def')
         for mf in ['setup_environment']+glob.glob("**/*akefile", recursive=True)+glob.glob("**/*.mk", recursive=True):
             print(mf, flush=True)
-            fno = " -fno-reorder-blocks-and-partition" if "%gcc" in self.spec else ""
             m = FileFilter(mf)
             m.filter('gcc-\$\(CC_VERSION\)/cuda-\$\(CUDART_VERSION\)/','')
             m.filter('gcc-\$CC_VERSION/cuda-\$CUDA_VERSION_NUMBER/','')
