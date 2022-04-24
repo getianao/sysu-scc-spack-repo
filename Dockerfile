@@ -30,7 +30,7 @@ git clone \
     --depth=1 \
     -b releases/latest \
     https://github.com/spack/spack
-source ${SYSU_OPT}/spack/share/spack/setup-env.sh
+. ${SYSU_OPT}/spack/share/spack/setup-env.sh
 spack repo add --scope=site sysu-scc-spack-repo
 spack compiler add --scope=site
 spack install ${SYSU_DEFAULT_COMPILER} && spack gc -y
