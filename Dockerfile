@@ -11,7 +11,7 @@ apt install --no-install-recommends -y \
     gcc-10 g++-10 \
     make patch patchelf bash \
     tar gzip unzip bzip2 xz-utils \
-    file gnupg2 git openssl \
+    file gnupg2 git ca-certificates \
     python3 python3-dev python3-distutils \
     docker.io # nvidia-driver
 apt clean -y
