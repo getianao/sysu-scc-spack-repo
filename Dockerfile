@@ -15,6 +15,7 @@ apt install --no-install-recommends -y \
     python3 python3-dev python3-distutils \
     docker.io # nvidia-driver
 apt clean -y
+useradd scc
 EOF
 USER scc
 WORKDIR /home/scc
