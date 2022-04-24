@@ -13,7 +13,7 @@ apt install --no-install-recommends -y \
     tar gzip unzip bzip2 xz-utils \
     file gnupg2 git \
     python3 python3-dev python3-distutils \
-    docker.io nvidia-driver
+    docker.io # nvidia-driver
 apt clean -y
 EOF
 USER scc
