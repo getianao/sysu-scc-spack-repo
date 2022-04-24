@@ -13,9 +13,8 @@ spack repo add --scope=site sysu-scc-spack-repo
 spack install \
     sysu-scc-spack-repo.hpl-ai \
     ^blaspp@2021.04.01+openmp \
-    ^openblas@0.3.18 threads=openmp \
-    ^mpich@3.2.1 \
-    ^findutils@4.4.2 # findutils@4.6.0 will fail on Centos7
+    ^openblas threads=openmp \
+    ^mpich
 spack load hpl-ai
 cp $(spack location -i hpl-ai)/bin/HPL.dat HPL.dat
 OMP_NUM_THREADS=2 $(which mpirun) -n 4 xhpl_ai

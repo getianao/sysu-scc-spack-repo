@@ -59,4 +59,9 @@ jobs:
           image: ${{ steps.meta.outputs.tags }}
           run: |
             source ${SYSU_OPT}/spack/share/spack/setup-env.sh
+            spack install -y \
+              sysu-scc-spack-repo.hpl-ai \
+              ^blaspp@2021.04.01+openmp \
+              ^openblas threads=openmp \
+              ^mpich
             spack find
