@@ -11,7 +11,7 @@
    - 需要注意的是，此处的 [spack.yaml](./spack.yaml) 仅作为示例，并非中大超算队在比赛中使用的版本。可以参照 [spack 文档](https://spack.readthedocs.io/en/stable/environments.html#spack-yaml)，打包符合实际需要的软件环境。
 3. 基于 [GitHub Actions](https://github.com/SYSU-SCC/sysu-scc-spack-repo/actions) 的构建测试，保障脚本的代码质量。
 
-同样欢迎其他学校使用，欢迎[![Stars](https://img.shields.io/github/stars/SYSU-SCC/sysu-scc-spack-repo.svg)](https://github.com/SYSU-SCC/sysu-scc-spack-repo)[![Forks](https://img.shields.io/github/forks/SYSU-SCC/sysu-scc-spack-repo.svg)](https://github.com/SYSU-SCC/sysu-scc-spack-repo/fork)[![Issues](https://img.shields.io/github/issues/SYSU-SCC/sysu-scc-spack-repo.svg)](https://github.com/SYSU-SCC/sysu-scc-spack-repo/issues)[![Issues-pr](https://img.shields.io/github/issues-pr/SYSU-SCC/sysu-scc-spack-repo)](https://github.com/SYSU-SCC/sysu-scc-spack-repo/pulls)！友好的超算比赛环境，由你我共建～
+同样欢迎其他学校使用，欢迎[![Stars](https://img.shields.io/github/stars/SYSU-SCC/sysu-scc-spack-repo.svg)](https://github.com/SYSU-SCC/sysu-scc-spack-repo)[![Issues](https://img.shields.io/github/issues/SYSU-SCC/sysu-scc-spack-repo.svg)](https://github.com/SYSU-SCC/sysu-scc-spack-repo/issues)[![Issues-pr](https://img.shields.io/github/issues-pr/SYSU-SCC/sysu-scc-spack-repo)](https://github.com/SYSU-SCC/sysu-scc-spack-repo/pulls)！友好的超算比赛环境，由你我共建～
 
 ## How to use
 
