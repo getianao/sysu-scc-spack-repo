@@ -1,3 +1,3 @@
 spack:
   specs:
-    - hpl-ai ^blaspp+openmp ^openblas threads=openmp ^mpich
+    - zlib # for test
