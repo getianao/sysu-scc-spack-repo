@@ -12,7 +12,7 @@
 git clone https://github.com/SYSU-SCC/sysu-scc-spack-repo
 
 # 只依赖这一个环境变量，可以放进 ~/.bashrc
-export SCC_SETUP_ENV=$(real path sysu-scc-spack-repo/share/sysu-scc-spack-repo/setup-env.sh)
+export SCC_SETUP_ENV=$(realpath sysu-scc-spack-repo/share/sysu-scc-spack-repo/setup-env.sh)
 
 # 初始化
 sysu-scc-spack-repo/share/sysu-scc-spack-repo/init-env.sh
