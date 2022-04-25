@@ -9,9 +9,9 @@
 1. 从源码重新编译的旧版本 `gcc`（此处选择了 `gcc@7.5.0`，也可以在[这个文件](./sysu-scc-spack-repo/share/sysu-scc-spack-repo/setup-env.sh)中修改对应的环境变量）。
 2. 基于 [spack environments](https://spack.readthedocs.io/en/stable/environments.html) 快速安装必要的软件环境，例如 `mpi` 等。
    - 需要注意的是，此处的 [spack.yaml](./spack.yaml) 仅作为示例，并非中大超算队在比赛中使用的版本。可以参照 [spack 文档](https://spack.readthedocs.io/en/stable/environments.html#spack-yaml)，打包符合实际需要的软件环境。
-3. 基于 GitHub Actions 的构建测试，保障脚本的代码质量。
+3. 基于 [GitHub Actions](https://github.com/SYSU-SCC/sysu-scc-spack-repo/actions) 的构建测试，保障脚本的代码质量。
 
-同样欢迎其他学校使用，欢迎[![Star](https://img.shields.io/github/stars/SYSU-SCC/sysu-scc-spack-repo.svg)](https://github.com/SYSU-SCC/sysu-scc-spack-repo)[![Fork](https://img.shields.io/github/forks/SYSU-SCC/sysu-scc-spack-repo.svg)](https://github.com/SYSU-SCC/sysu-scc-spack-repo/fork)！友好的超算比赛环境，由你我共建～
+同样欢迎其他学校使用，欢迎[![Stars](https://img.shields.io/github/stars/SYSU-SCC/sysu-scc-spack-repo.svg)](https://github.com/SYSU-SCC/sysu-scc-spack-repo)[![Forks](https://img.shields.io/github/forks/SYSU-SCC/sysu-scc-spack-repo.svg)](https://github.com/SYSU-SCC/sysu-scc-spack-repo/fork)[![Issues](https://img.shields.io/github/issues/SYSU-SCC/sysu-scc-spack-repo.svg)](https://github.com/SYSU-SCC/sysu-scc-spack-repo/issues)[![Issues](https://img.shields.io/github/issues/SYSU-SCC/sysu-scc-spack-repo.svg)](https://github.com/SYSU-SCC/sysu-scc-spack-repo/issues)[![Issues-pr](https://img.shields.io/github/issues-pr/SYSU-SCC/sysu-scc-spack-repo)](https://github.com/SYSU-SCC/sysu-scc-spack-repo/pulls)！友好的超算比赛环境，由你我共建～
 
 ## How to use
 
