@@ -9,12 +9,9 @@ git clone https://github.com/SYSU-SCC/sysu-scc-spack-repo
 spack repo add --scope=site sysu-scc-spack-repo
 
 # A Simple Test
-
-spack install \
-    sysu-scc-spack-repo.hpl-ai \
-    ^blaspp@2021.04.01+openmp \
-    ^openblas threads=openmp \
-    ^mpich
+spack env create sysu-scc sysu-scc-spack-repo/spack.yaml
+spack env activate -p sysu-scc
+spack install
 spack load hpl-ai
 cp $(spack location -i hpl-ai)/bin/HPL.dat HPL.dat
 OMP_NUM_THREADS=2 $(which mpirun) -n 4 xhpl_ai

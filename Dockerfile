@@ -10,7 +10,7 @@ apt upgrade -y
 apt install --no-install-recommends -y \
     gcc-10 g++-10 \
     make patch patchelf bash \
-    tar gzip unzip bzip2 xz-utils \
+    tar unzip bzip2 xz-utils \
     file gnupg2 git ca-certificates \
     python3 python3-dev python3-distutils \
     docker.io # nvidia-driver
@@ -18,21 +18,21 @@ apt clean -y
 useradd scc
 EOF
 USER scc
-WORKDIR /home/scc
-COPY . /home/scc/sysu-scc-spack-repo
-ENV SYSU_OPT=/home/scc \
-    SYSU_DEFAULT_COMPILER=gcc@7.5.0
+ENV SCC_OPT=/home/scc/opt \
+    SCC_SETUP_ENV='. '${SCC_OPT}'/sysu-scc-spack-repo/share/sysu-scc-spack-repo/setup-env.sh'
+WORKDIR ${SCC_OPT}
+COPY . sysu-scc-spack-repo
 RUN <<EOF
 git clone \
     -c feature.manyFiles=true \
     --depth=1 \
     -b releases/latest \
     https://github.com/spack/spack
-. ${SYSU_OPT}/spack/share/spack/setup-env.sh
+${SCC_SETUP_ENV}
 spack repo add --scope=site sysu-scc-spack-repo
 spack compiler add --scope=site
-spack install ${SYSU_DEFAULT_COMPILER} && spack gc -y
-spack compiler add --scope=site $(spack location -i ${SYSU_DEFAULT_COMPILER})
-spack config --scope=site add "packages:all:compiler:[${SYSU_DEFAULT_COMPILER}]"
+spack install ${SCC_DEFAULT_COMPILER} && spack gc -y
 spack clean -a
+spack compiler add --scope=site $(spack location -i ${SCC_DEFAULT_COMPILER})
+spack config --scope=site add "packages:all:compiler:[${SCC_DEFAULT_COMPILER}]"
 EOF
