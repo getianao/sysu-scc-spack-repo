@@ -12,6 +12,7 @@ spack repo add --scope=site sysu-scc-spack-repo
 spack env create sysu-scc sysu-scc-spack-repo/spack.yaml
 spack env activate -p sysu-scc
 spack install
+spack env deactivate
 spack load hpl-ai
 cp $(spack location -i hpl-ai)/bin/HPL.dat HPL.dat
 OMP_NUM_THREADS=2 $(which mpirun) -n 4 xhpl_ai
