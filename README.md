@@ -1,6 +1,6 @@
 # sysu-scc-spack-repo
 
-[Spack](https://spack.readthedocs.io/en/v0.17.1/repositories.html) package repository maintained by Student Cluster Competition Team @ Sun Yat-sen University.
+[Spack](https://spack.readthedocs.io/en/stable/repositories.html) package repository maintained by Student Cluster Competition Team @ Sun Yat-sen University.
 
 ## How to use
 

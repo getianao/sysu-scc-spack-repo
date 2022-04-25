@@ -19,7 +19,7 @@ useradd scc
 EOF
 USER scc
 ENV SCC_OPT=/home/scc/opt \
-    SCC_SETUP_ENV='. '${SCC_OPT}'/sysu-scc-spack-repo/share/sysu-scc-spack-repo/setup-env.sh'
+    SCC_SETUP_ENV='. /home/scc/opt/sysu-scc-spack-repo/share/sysu-scc-spack-repo/setup-env.sh'
 WORKDIR ${SCC_OPT}
 COPY . sysu-scc-spack-repo
 RUN <<EOF
