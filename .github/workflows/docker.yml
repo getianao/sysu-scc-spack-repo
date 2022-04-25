@@ -59,7 +59,5 @@ jobs:
           image: ${{ steps.meta.outputs.tags }}
           run: |
             ${SCC_SETUP_ENV}
-            spack env create sysu-scc ${SCC_OPT}/sysu-scc-spack-repo/spack.yaml
-            spack env activate -p sysu-scc
             spack install
             spack find

@@ -23,16 +23,5 @@ ENV SCC_OPT=/home/scc/opt \
 WORKDIR ${SCC_OPT}
 COPY . sysu-scc-spack-repo
 RUN <<EOF
-git clone \
-    -c feature.manyFiles=true \
-    --depth=1 \
-    -b releases/latest \
-    https://github.com/spack/spack
-${SCC_SETUP_ENV}
-spack repo add --scope=site sysu-scc-spack-repo
-spack compiler add --scope=site
-spack install ${SCC_DEFAULT_COMPILER} && spack gc -y
-spack clean -a
-spack compiler add --scope=site $(spack location -i ${SCC_DEFAULT_COMPILER})
-spack config --scope=site add "packages:all:compiler:[${SCC_DEFAULT_COMPILER}]"
+${SCC_OPT}/sysu-scc-spack-repo/share/sysu-scc-spack-repo/init-env.sh
 EOF
