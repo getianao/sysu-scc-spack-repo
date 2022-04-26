@@ -18,4 +18,5 @@ class SysuLang(CMakePackage):
 
     depends_on('flex', type='build')
     depends_on('bison', type='build')
-    depends_on('llvm+clang', type='link')
+    depends_on('llvm@11.0.0:+clang', type='link')
+    depends_on('python@3.8.0:', type='run')
