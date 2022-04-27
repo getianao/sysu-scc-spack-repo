@@ -54,7 +54,6 @@ jobs:
 
       - name: Run Tests
         uses: addnab/docker-run-action@v3
-        continue-on-error: true
         with:
           image: ${{ steps.meta.outputs.tags }}
           run: |
