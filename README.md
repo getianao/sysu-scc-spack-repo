@@ -54,6 +54,20 @@ cp $(spack location -i hpl-ai)/bin/HPL.dat HPL.dat
 OMP_NUM_THREADS=2 $(which mpirun) -n 4 xhpl_ai
 ```
 
+### 在 docker 中测试
+
+```bash
+docker pull wukan0621/sccenv
+docker run \
+  --name sccenv \
+  -it wukan0621/sccenv \
+  bash
+
+# 然后在 docker 中检查
+. ${SCC_SETUP_ENV}
+spack find
+```
+
 ## License
 
 This project is part of Spack. Spack is distributed under the terms of both the
