@@ -8,6 +8,8 @@ rm -rf $(dirname ${SCC_SETUP_ENV})/../../../spack/.git
 . ${SCC_SETUP_ENV}
 spack repo add --scope=site $(dirname ${SCC_SETUP_ENV})/../..
 spack compiler add --scope=site
-spack install -y ${SCC_DEFAULT_COMPILER} && spack gc -y && spack clean -ab
+spack install --fail-fast -y ${SCC_DEFAULT_COMPILER} target=$(arch) &&
+    spack gc -y
 spack compiler add --scope=site $(spack location -i ${SCC_DEFAULT_COMPILER})
 spack config --scope=site add "packages:all:compiler:[${SCC_DEFAULT_COMPILER}]"
+spack clean -ab

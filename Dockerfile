@@ -6,11 +6,12 @@ apt upgrade -y
 apt install --no-install-recommends -y \
     apt-transport-https ca-certificates \
     software-properties-common \
-    sudo passwd docker.io # nvidia-driver
+    sudo passwd
 apt-add-repository non-free
 apt-add-repository contrib
 apt update -y
 apt upgrade -y
+# apt install --no-install-recommends -y docker.io nvidia-driver
 apt install --no-install-recommends -y \
     gcc-10 g++-10 \
     make patch patchelf bash \
