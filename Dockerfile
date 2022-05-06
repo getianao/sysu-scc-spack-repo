@@ -21,9 +21,8 @@ apt clean -y
 useradd -m scc
 EOF
 USER scc
-WORKDIR ~
-ENV SCC_SETUP_ENV=~/sysu-scc-spack-repo/share/sysu-scc-spack-repo/setup-env.sh
+ARG SCC_OPT=/home/scc/opt
+WORKDIR ${SCC_OPT}
 COPY . sysu-scc-spack-repo
-RUN <<EOF
-sysu-scc-spack-repo/share/sysu-scc-spack-repo/init-env.sh
-EOF
+ENV SCC_SETUP_ENV=${SCC_OPT}/sysu-scc-spack-repo/share/sysu-scc-spack-repo/setup-env.sh
+RUN $(dirname ${SCC_SETUP_ENV})/init-env.sh
