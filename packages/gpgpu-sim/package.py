@@ -22,7 +22,7 @@ class GpgpuSim(MakefilePackage):
     depends_on('bison', type=('build'))
     depends_on('flex', type=('build'))
     depends_on('zlib', type=('link'))
-    depends_on('cuda@:11.0.99', type=('build', 'link', 'run'))
+    depends_on('cuda', type=('build', 'link', 'run'))
     depends_on('gl', type=('link'))
     conflicts("%"+"gcc@8:")
 
