@@ -15,8 +15,9 @@ class Cutlass(CMakePackage, CudaPackage):
 
     version('master', branch='master')
     version(
+        '2.9.1', sha256="2d6474576c08ee21d7f4f3a10fd1a47234fd9fd638efc8a2e0e64bb367f09bc1")
+    version(
         '2.9.0', sha256="ccca4685739a3185e3e518682845314b07a5d4e16d898b10a3c3a490fd742fb4")
-    version('2.8.0', sha256="1938F0E739646370A59BA1F5E365BE4C701E8D9E0B9B725D306622E9AAFA6B2A".lower())
     variant('cuda', default=True, description='Build with CUDA')
     conflicts('~cuda')
 
