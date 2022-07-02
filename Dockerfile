@@ -11,7 +11,6 @@ apt-add-repository non-free
 apt-add-repository contrib
 apt update -y
 apt upgrade -y
-# apt install --no-install-recommends -y docker.io nvidia-driver
 apt install --no-install-recommends -y \
     gcc-10 g++-10 \
     make patch patchelf bash \

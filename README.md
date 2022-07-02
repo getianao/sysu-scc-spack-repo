@@ -2,7 +2,7 @@
 
 [Spack](https://spack.readthedocs.io/en/stable/repositories.html) package [repository](./packages) maintained by Student Cluster Competition Team @ Sun Yat-sen University.
 
-由中山大学超算队维护的 [spack](https://spack.readthedocs.io/en/stable/repositories.html) package [repository](./packages)。
+由中山大学超算队维护的 [spack](https://spack.readthedocs.io/en/stable/repositories.html) package [repository](./packages)；同时，我们也向上游提交了包括 cutlass（[spack#31379](https://github.com/spack/spack/pull/31379)）、py-altair（[spack#31386](https://github.com/spack/spack/pull/31386)）在内的 package，并已合并入主线。
 
 同时提供了一个面向超算竞赛的[环境部署脚本](./sysu-scc-spack-repo/share/sysu-scc-spack-repo/init-env.sh)，旨在比赛期间快速构建一个可以使用的 spack 环境，其中包括：
 
