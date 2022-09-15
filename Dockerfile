@@ -4,7 +4,7 @@ RUN <<EOF
 apt-get update -y
 apt-get upgrade -y
 apt-get install --no-install-recommends -y \
-    clang-11 python3-minimal \
+    clang-11 python3 \
     make patch patchelf bash \
     tar gzip unzip bzip2 xz-utils \
     file gnupg2 git \
