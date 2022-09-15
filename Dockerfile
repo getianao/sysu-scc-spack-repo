@@ -8,7 +8,7 @@ apt-get install --no-install-recommends -y \
     make patch patchelf bash \
     tar gzip unzip bzip2 xz-utils \
     file gnupg2 git \
-    passwd
+    ca-certificates passwd
 apt-get autoremove -y
 apt-get clean -y
 rm -rf /var/lib/apt/lists/*
