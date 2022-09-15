@@ -1,23 +1,17 @@
 # syntax=docker/dockerfile:1.4
-FROM debian:11
+FROM debian:11-slim
 RUN <<EOF
-apt update -y
-apt upgrade -y
-apt install --no-install-recommends -y \
-    apt-transport-https ca-certificates \
-    software-properties-common \
-    sudo passwd
-apt-add-repository non-free
-apt-add-repository contrib
-apt update -y
-apt upgrade -y
-apt install --no-install-recommends -y \
-    gcc-10 g++-10 \
+apt-get update -y
+apt-get upgrade -y
+apt-get install --no-install-recommends -y \
+    clang-11 python3-minimal \
     make patch patchelf bash \
-    tar unzip bzip2 xz-utils \
+    tar gzip unzip bzip2 xz-utils \
     file gnupg2 git \
-    python3 python3-dev python3-distutils
-apt clean -y
+    passwd
+apt-get autoremove -y
+apt-get clean -y
+rm -rf /var/lib/apt/lists/*
 useradd -m scc
 EOF
 USER scc
