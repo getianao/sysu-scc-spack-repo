@@ -14,6 +14,7 @@ class Cutlass(CMakePackage, CudaPackage):
     url = "https://github.com/NVIDIA/cutlass/archive/refs/tags/v2.9.0.tar.gz"
 
     version('master', branch='master')
+    version("2.10.0", sha256="8f56727c0c7ca59f67f6904972958a6e7e925f72e112056e6df7bb3fdeacefd7")
     version(
         '2.9.1', sha256="2d6474576c08ee21d7f4f3a10fd1a47234fd9fd638efc8a2e0e64bb367f09bc1")
     version(
