@@ -8,8 +8,8 @@ RUN <<EOF
 apt-get update -y
 apt-get upgrade -y
 apt-get install --no-install-recommends -y \
-    clang-11 python3 python3-dev \
-    make patch bash \
+    clang-11 python3 \
+    make patch patchelf bash \
     tar gzip unzip bzip2 xz-utils \
     file git ca-certificates
 apt-get autoremove -y
