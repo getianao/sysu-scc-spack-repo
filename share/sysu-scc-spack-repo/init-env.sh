@@ -4,7 +4,7 @@ git clone \
     --depth=1 \
     https://github.com/spack/spack \
     $(dirname $SCC_SETUP_ENV)/../../../spack
-rm -rf $(dirname $SCC_SETUP_ENV)/../../../spack/.git
+# rm -rf $(dirname $SCC_SETUP_ENV)/../../../spack/.git
 . $SCC_SETUP_ENV
 spack repo add --scope=site $(dirname $SCC_SETUP_ENV)/../..
 spack compiler add --scope=site
